@@ -5,6 +5,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalTime;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -63,4 +64,17 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>OrderValue<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    @Test
+    public void return_order_value_when_menu_item_names_passed_as_a_list_of_items(){
+        restaurant.addToMenu("Sizzling brownie",319);
+
+        List<Item> menu = restaurant.getMenu();
+        int total = 119 + 269 + 319;
+        assertEquals(total,restaurant.getOrderValue(menu));
+    }
+    //<<<<<<<<<<<<<<<<<<<<<<<OrderValue>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 }
